@@ -6,24 +6,8 @@ const int IN4 = 10;
 char ori;
 String path[] = {"S", "+y", "+x", "-y", "+x", "-y", "-x", "-y", "-x", "+y", "F"};
 int path_length = sizeof(path) / sizeof(path[0]);
-if (path[1]=="+y"){
-  ori = 'N';
-}
-else if (path[1]=="+x"){
-  ori = 'E';
-}
-else if (path[1]=="-y"){
-  ori = 'S';
-}
-else{
-  ori = 'W';
-}
 
-void setup() {
-  pinMode(IN1, OUTPUT);
-  pinMode(IN2, OUTPUT);
-  pinMode(IN3, OUTPUT);
-  pinMode(IN4, OUTPUT);
+
 void forward(){
   analogWrite(IN1, 0);
   analogWrite(IN2, 120);
@@ -48,6 +32,24 @@ void stop(){
   analogWrite(IN3, 0);
   analogWrite(IN4, 0);
 }
+
+void setup() {
+  pinMode(IN1, OUTPUT);
+  pinMode(IN2, OUTPUT);
+  pinMode(IN3, OUTPUT);
+  pinMode(IN4, OUTPUT);
+  if (path[1]=="+y"){
+  ori = 'N';
+  }
+  else if (path[1]=="+x"){
+  ori = 'E';
+  }
+  else if (path[1]=="-y"){
+  ori = 'S';
+  }
+  else{
+  ori = 'W';
+  }
   
 }
 
@@ -67,7 +69,7 @@ void loop() {
     else if (path[i]=="+y"){
       if (ori == 'N'){
         forward();
-        delay(3000)
+        delay(3000);
       }
       else if (ori == 'E'){
         turn_left();
@@ -111,7 +113,7 @@ void loop() {
     else if (path[i]=="-y"){
       if (ori == 'S'){
         forward();
-        delay(3000)
+        delay(3000);
       }
       else if (ori == 'W'){
         turn_left();
@@ -133,7 +135,7 @@ void loop() {
     else{
       if (ori == 'W'){
         forward();
-        delay(3000)
+        delay(3000);
       }
       else if (ori == 'N'){
         turn_left();
